@@ -1,12 +1,15 @@
+<script setup lang="ts">
+import NavbarComponent from '@/components/Navbar.vue';
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <navbar-component />
+  <router-view />
 </template>
 
 <style lang="scss">
+@import '~bulma';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +19,6 @@
 }
 
 nav {
-  padding: 30px;
 
   a {
     font-weight: bold;
