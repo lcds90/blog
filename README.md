@@ -1,4 +1,4 @@
-# gojs-visual-doc
+# lcds-blog
 
 ## Project setup
 ```
