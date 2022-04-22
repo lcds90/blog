@@ -18,11 +18,7 @@ defineProps({
     <main class="card-content">
       <section class="media">
         <div class="media-center">
-          <img
-            src="https://res.cloudinary.com/ameo/image/upload/v1639144778/typocat_svbspx.png"
-            class="author-image"
-            alt="Placeholder image"
-          >
+          <slot name="image" />
         </div>
         <div class="media-content has-text-centered">
           <p class="title article-title">
@@ -34,13 +30,13 @@ defineProps({
         </div>
       </section>
       <section class="content article-body">
-        <slot />
+        <slot name="content" />
       </section>
     </main>
   </article>
 </template>
 
-<style scoped>
+<style>
 .content p {
     line-height: 1.9;
     margin: 15px 0;
