@@ -52,7 +52,6 @@ const menu = [
 </template>
 
 <style lang="scss">
-@import '~bulma';
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

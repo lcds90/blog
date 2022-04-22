@@ -1,17 +1,28 @@
-<script lang="ts" setup>
+<script lang="ts">
 import ArticleComponent from '@/components/Article.vue';
+import { defineComponent } from 'vue';
+import { useI18n } from 'vue-i18n';
 
-const info = {
-  img: 'https://pt.gravatar.com/userimage/173633821/5be3e17da80d643624d6da6dd59d521b?size=400',
-  alt: 'Foto de Leonardo Santos',
-};
+export default defineComponent({
+  components: {
+    ArticleComponent,
+  },
+  setup() {
+    const { t } = useI18n();
+    const info = {
+      img: 'https://pt.gravatar.com/userimage/173633821/5be3e17da80d643624d6da6dd59d521b?size=400',
+      alt: 'Foto de Leonardo Santos',
+    };
+    return { t, info };
+  },
+});
 
 </script>
 
 <template>
   <article-component
     title="Sou Leonardo Santos"
-    subtitle="subtitle"
+    subtitle="Apaixonado por tecnologia, desenvolvedor front-end e apaixonado pelo mundo web e pai de 9 gatinhos."
   >
     <template #image>
       <img
@@ -22,9 +33,7 @@ const info = {
     </template>
     <template #content>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-        incididunt ut labore et dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas.
-        Sapien eget mi proin sed. Sit amet mattis vulputate enim.
+        {{ t('hello') }}
       </p>
       <p>
         Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non.
@@ -44,3 +53,14 @@ const info = {
     </template>
   </article-component>
 </template>
+
+<i18n>
+{
+  "en": {
+    "hello": "hello world!"
+  },
+  "ja": {
+    "hello": "こんにちは、世界！"
+  }
+}
+</i18n>
