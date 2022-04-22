@@ -21,7 +21,7 @@ useHead({
       name: 'description',
     },
   ],
-  title: computed(() => siteData.title),
+  title: 'LCDS | Blog',
 });
 
 </script>
@@ -42,12 +42,10 @@ useHead({
 <i18n locale="en">
 {
     "description": "I am a software engineer and a lover of technology. In my blog I will comment on the following technologies:",
-    "head": "LCDS' - Blog",
 }
 </i18n>
 <i18n locale="pt">
 {
     "description": "Sou engenheiro front-end de software. <br>Profissionalmente, estou atuando na empresa Zenvia. <br> Tendo trilhado esse caminho desde 2018, pretendo compartilhar meu conhecimento a respeito das tecnologias que venho utilizando no mercado de trabalho e pessoalmente.",
-    "head": "LCDS - Blog",
 }
 </i18n>

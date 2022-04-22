@@ -64,13 +64,11 @@ const getGreeting = () => {
 {
     "introduction": "Hello, I am <b>Leonardo Santos</b>",
     "about": "I am a software engineer and a lover of technology. In my blog I will comment on the following technologies:",
-    "head": "LCDS' - Blog",
     "sharing": "Compartilhando conhecimento como reflexão da paixão que tenho por esse mundo da tecnologia. 💖"
 }
 </i18n>
 <i18n locale="pt">
 {
-    "head": "LCDS - Blog",
     "introduction": "Olá, eu sou <b>Leonardo Santos</b>",
     "about": "Sou engenheiro front-end de software. <br>Profissionalmente, estou atuando na empresa Zenvia. <br> Tendo trilhado esse caminho desde 2018, pretendo compartilhar meu conhecimento a respeito das tecnologias que venho utilizando no mercado de trabalho e pessoalmente.",
     "sharing": "Compartilhando conhecimento como reflexão da paixão que tenho por esse mundo da tecnologia. 💖",
