@@ -1,20 +1,14 @@
-<script lang="ts">
+<script setup lang="ts">
 import ArticleComponent from '@/components/Article.vue';
-import { defineComponent } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-export default defineComponent({
-  components: {
-    ArticleComponent,
-  },
-  setup() {
-    const { t } = useI18n();
-    const info = {
-      img: 'https://pt.gravatar.com/userimage/173633821/5be3e17da80d643624d6da6dd59d521b?size=400',
-      alt: 'Foto de Leonardo Santos',
-    };
-    return { t, info };
-  },
+const info = {
+  img: 'https://pt.gravatar.com/userimage/173633821/5be3e17da80d643624d6da6dd59d521b?size=400',
+  alt: 'Foto de Leonardo Santos',
+};
+
+const { t } = useI18n({
+  inheritLocale: true,
 });
 
 </script>
@@ -32,13 +26,10 @@ export default defineComponent({
       >
     </template>
     <template #content>
+      <p v-html="t('introduction')" />
+      <hr>
       <p>
-        {{ t('hello') }}
-      </p>
-      <p>
-        Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non.
-        Proin fermentum leo vel orci porta non pulvinar. Imperdiet proin fermentum leo vel.
-        Tortor posuere ac ut consequat semper viverra. Vestibulum lectus mauris ultrices eros.
+        {{ t('about') }}
       </p>
       <h3 class="has-text-centered">
         Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Cras tincidunt
@@ -54,13 +45,15 @@ export default defineComponent({
   </article-component>
 </template>
 
-<i18n>
+<i18n locale="en">
 {
-  "en": {
-    "hello": "hello world!"
-  },
-  "ja": {
-    "hello": "こんにちは、世界！"
-  }
+    "introduction": "Hello, I am <b>Leonardo Santos</b>",
+    "about": "I am a software engineer and a lover of technology. In my blog I will comment on the following technologies:"
+}
+</i18n>
+<i18n locale="pt">
+{
+    "introduction": "Olá, eu sou <b>Leonardo Santos</b>",
+    "about": "Atualmente atuo como engenheiro de software, \n atuando especialmente na área de front-end na empresa Zenvia, \ e venho compartilhar meu conhecimento a respeito das tecnologias que venho utilizando no mercado de trabalho e pessoalmente, \n espero que curta as minhas postagens!"
 }
 </i18n>

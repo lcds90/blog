@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     'max-len': ['error', {
       ignoreComments: true,
+      ignorePattern: '"*": "*"',
       code: 200,
     }],
     'no-underscore-dangle': 'off',

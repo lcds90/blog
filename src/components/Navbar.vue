@@ -2,9 +2,16 @@
   <nav class="navbar">
     <div class="container">
       <div class="navbar-brand">
-        <!-- <a class="navbar-item" href="../">
-                    <img src="../images/bulma.png" alt="Logo">
-                </a> -->
+        <a
+          class="navbar-item"
+          href="../"
+        >
+          <img
+            src="https://pt.gravatar.com/userimage/173633821/43a8fe0fbd25e7e5e850abc02eb801a5.png?size=1000"
+            alt="Logo"
+            :style="{borderRadius: '5px', width: 'auto', height: '200px'}"
+          >
+        </a>
         <span
           class="navbar-burger burger"
           data-target="navbarMenu"
