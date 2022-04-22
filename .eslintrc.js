@@ -14,6 +14,10 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
+    'max-len': ['error', {
+      ignoreComments: true,
+      code: 200,
+    }],
     'no-underscore-dangle': 'off',
     'vue/multi-word-component-names': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

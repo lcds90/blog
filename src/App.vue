@@ -47,9 +47,8 @@ const menu = [
         {{ link.name }}
       </router-link>
     </template>
-    <navbar-component />
-    <router-view />
   </navbar-component>
+  <router-view />
 </template>
 
 <style lang="scss">
