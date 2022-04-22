@@ -10,6 +10,7 @@
     "i18n:report": "vue-cli-service i18n:report --src \"./src/**/*.?(js|vue)\" --locales \"./src/locales/**/*.json\""
   },
   "dependencies": {
+    "@vueuse/head": "^0.7.6",
     "bulma": "^0.9.3",
     "core-js": "^3.8.3",
     "gojs": "^2.2.7",
