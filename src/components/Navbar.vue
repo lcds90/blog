@@ -19,29 +19,13 @@
         class="navbar-menu"
       >
         <div class="navbar-end">
-          <router-link
-            class="navbar-item"
-            to="/"
-          >
-            Básico
-          </router-link>
-          <router-link
-            class="navbar-item"
-            to="/about"
-          >
-            Building parts
-          </router-link>
+          <slot name="navbar-links" />
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               Menu
             </a>
             <div class="navbar-dropdown">
-              <a class="navbar-item">
-                Início
-              </a>
-              <a class="navbar-item">
-                Sobre o projeto
-              </a>
+              <slot name="navbar-menu-links" />
               <hr class="navbar-divider">
               <div class="navbar-item">
                 Portfólio

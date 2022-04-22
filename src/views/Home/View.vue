@@ -5,6 +5,10 @@ import HeroVue from '@/components/Hero.vue';
 
 <template>
   <div class="home">
-    <hero-vue />
+    <hero-vue>
+      <template #title>
+        Welcome!
+      </template>
+    </hero-vue>
   </div>
 </template>

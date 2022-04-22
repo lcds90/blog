@@ -3,8 +3,7 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <h1 class="title">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
-          sed eiusmod tempor incididunt ut labore et dolore magna aliqua
+          <slot name="title" />
         </h1>
       </div>
     </div>
