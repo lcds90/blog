@@ -1,19 +1,29 @@
 <script setup lang="ts">
-import AsideView from '@/components/Aside.vue';
+import AsideView, { IProps } from '@/components/Aside.vue';
 import { useHead } from '@vueuse/head';
 import { reactive, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-
-const info = {
-  alt: 'Logo do GoJS',
-  img: 'https://forum.nwoods.com/uploads/db3963/original/2X/6/62748081a15930698a68851c33e398d990750ed5.png',
-};
+import IDS from '@/views/GoJS/_enums';
 
 const { t } = useI18n();
+
+const asideData: IProps = {
+  list: [
+    {
+      items: [
+        {
+          label: 'O que é o GoJS?',
+          link: IDS.WHAT_IS,
+        },
+      ],
+      title: 'Básico',
+    },
+  ],
+};
 
 const getGreeting = () => 'Atualmente há x artigos escritos';
 </script>
 
 <template>
-  <aside-view />
+  <aside-view :list="asideData.list" />
 </template>
