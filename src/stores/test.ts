@@ -7,8 +7,8 @@ const testStore = defineStore('test', {
   state: () => ({
     // all these properties will have their type inferred automatically
     counter: 0,
-    name: 'Eduardo',
     isAdmin: true,
+    name: 'Eduardo',
   }),
 });
 

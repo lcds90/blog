@@ -2,14 +2,19 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
     component: () => import(/* webpackChunkName: "about" */ '../views/Home/View.vue'),
+    name: 'home',
+    path: '/',
   },
   {
-    path: '/about',
-    name: 'about',
     component: () => import(/* webpackChunkName: "about" */ '../views/About/View.vue'),
+    name: 'about',
+    path: '/about',
+  },
+  {
+    component: () => import(/* webpackChunkName: "about" */ '../views/GoJS/View.vue'),
+    name: 'gojs',
+    path: '/gojs',
   },
 ];
 

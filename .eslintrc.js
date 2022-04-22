@@ -1,5 +1,4 @@
 module.exports = {
-  root: true,
   env: {
     node: true,
     'vue/setup-compiler-macros': true,
@@ -13,15 +12,39 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2020,
   },
+  root: true,
   rules: {
     'max-len': ['error', {
+      code: 200,
       ignoreComments: true,
       ignorePattern: '"*": "*"',
-      code: 200,
     }],
-    'no-underscore-dangle': 'off',
-    'vue/multi-word-component-names': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'no-underscore-dangle': 'off',
+    'vue/attributes-order': ['error', {
+      alphabetical: true,
+      order: [
+        ['UNIQUE', 'SLOT'],
+        'LIST_RENDERING',
+        'TWO_WAY_BINDING',
+        'CONDITIONALS',
+        'DEFINITION',
+        'OTHER_ATTR',
+        'OTHER_DIRECTIVES',
+        'RENDER_MODIFIERS',
+        'GLOBAL',
+        'EVENTS',
+        'CONTENT',
+      ],
+    }],
+    'vue/multi-word-component-names': 'off',
+    'vue/sort-keys': ['error', 'asc', {
+      caseSensitive: true,
+      ignoreChildrenOf: ['model'],
+      ignoreGrandchildrenOf: ['computed', 'directives', 'inject', 'props', 'watch'],
+      minKeys: 2,
+      natural: false,
+    }],
   },
 };

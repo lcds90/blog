@@ -1,14 +1,14 @@
 <script setup lang="ts">
 defineProps({
-  title: {
-    type: String,
-    default: '',
-    required: true,
-  },
   subtitle: {
-    type: String,
     default: '',
     required: true,
+    type: String,
+  },
+  title: {
+    default: '',
+    required: true,
+    type: String,
   },
 });
 </script>
@@ -38,8 +38,8 @@ defineProps({
 
 <style>
 .content p {
-    line-height: 1.9;
     margin: 15px 0;
+    line-height: 1.9;
 }
 .article-title {
   font-size: 2rem;
@@ -47,12 +47,12 @@ defineProps({
   line-height: 2;
 }
 .article-subtitle {
-  color: #909AA0;
   margin-bottom: 3rem;
+  color: #909AA0;
 }
 .article-body {
-  line-height: 1.4;
   margin: 0 6rem;
+  line-height: 1.4;
 }
 
 .author-image {
