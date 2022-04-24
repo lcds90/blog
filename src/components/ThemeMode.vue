@@ -74,10 +74,10 @@ onMounted(() => {
 @import '../assets/scss/theme.scss';
 
 :root {
-  --background-color-primary: #ebebeb;
+  --background-color-primary: #d4d4d4;
   --background-color-secondary: #fafafa;
-  --accent-color: #cacaca;
-  --text-primary-color: #222;
+  --accent-color: #e0e0e0;
+  --text-primary-color: #000000;
   --primary-color: #{$pink};
 }
 
