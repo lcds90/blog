@@ -41,7 +41,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="p-4">
+  <div class="navbar-item">
     <label
       class="switch-label"
       for="checkbox"
@@ -52,18 +52,18 @@ onMounted(() => {
         id="checkbox"
         @change="toggleTheme"
       >
-      <span v-if="userTheme === 'dark-theme'">🌙</span>
-      <span v-else>☀️</span>
       <span
         v-if="userTheme === 'dark-theme'"
         class="theme-message p-2"
       >
+        <span>🌙</span>
         Dark mode ativado
       </span>
       <span
         v-else
         class="theme-message p-2"
       >
+        <span>☀️</span>
         Light mode ativado
       </span>
     </label>
@@ -110,11 +110,12 @@ h6 {
 <style scoped>
 .switch-label {
   display: grid;
-  grid: 1fr / repeat(2, 1fr);
+  grid: 1fr 0.75fr / 1fr;
   place-content: center;
   place-items: center;
-  gap: 10px;
   width: 100%;
+  background: var(--accent-color);
+  margin-top: 5px;
 }
 
 .switch-toggle {
@@ -147,20 +148,17 @@ h6 {
 }
 
 .theme-message {
-  position: absolute;
-    bottom: 19px;
-    left: 20px;
-    width: 175px;
-  /* border: 0.25px solid var(--accent-color); */
+  width: 175px;
   font-size: 0.75rem;
   display: grid;
+  grid: 1fr / 0.1fr 1fr;
   justify-items: end;
   background: radial-gradient(circle,
       var(--background-color-secondary) 0%,
       var(--background-color-secondary) 100%);
   animation: 2s ease fadeIn;
-  z-index: -1;
   border-left: var(--text-primary-color) double 3.5px;
+  color: var(--text-primary-color);
 }
 
 @keyframes fadeIn {
@@ -170,7 +168,7 @@ h6 {
   }
 
   100% {
-    left: 19px;
+    left: 16px;
     opacity: 1;
   }
 }

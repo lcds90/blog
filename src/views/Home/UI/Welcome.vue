@@ -62,26 +62,9 @@ const getGreeting = () => {
 
 <style>
 .welcome-container {
-  margin-top: 15vw;
+  margin-top: 7vh;
 }
 
-@media screen and (min-width: 768px) {
-  .welcome-container {
-    margin-top: 9vw;
-  }
-}
-
-@media screen and (min-width: 900px) {
-  .welcome-container {
-    margin-top: 7vw;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .welcome-container {
-    margin-top: 5vw;
-  }
-}
 </style>
 
 <i18n locale="en">

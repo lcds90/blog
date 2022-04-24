@@ -64,11 +64,10 @@ defineProps({
 
 .author-image {
     position: absolute;
-    top: -30px;
-    left: 50px;
+    top: 1vh;
+    left: 2vh;
     width: 60px;
     height: 60px;
-    margin-left: -30px;
     border: 3px solid #ccc;
     border-radius: 50%;
 }
@@ -83,11 +82,8 @@ defineProps({
 @media screen and (min-width: 768px) {
   .author-image {
     position: absolute;
-    top: -30px;
-    left: 80px;
     width: 60px;
     height: 60px;
-    margin-left: -30px;
     border: 3px solid #ccc;
     border-radius: 50%;
   }

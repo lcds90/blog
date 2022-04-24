@@ -12,9 +12,7 @@
             :style="{borderRadius: '5px', width: 'auto', height: '200px'}"
           >
         </a>
-        <div class="navbar-item">
-          <slot name="theme" />
-        </div>
+        <slot name="modes" />
         <span
           class="navbar-burger burger"
           data-target="navbarMenu"
@@ -50,7 +48,8 @@
 <style lang="scss">
 
 .navbar {
-
+  width: 100vw;
+  height: 10vh;
   background-color: var(--background-color-primary) !important;
   border-bottom: 2px solid var(--accent-color);
   a {
