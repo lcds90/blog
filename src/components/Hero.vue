@@ -1,11 +1,7 @@
 <template>
   <section class="hero is-small is-bold">
     <div class="hero-body">
-      <div class="hero-container container p-4">
-        <p class="hero-content">
-          <slot name="title" />
-        </p>
-      </div>
+      <div class="hero-container container p-4" />
     </div>
   </section>
 </template>
@@ -24,7 +20,7 @@
   .hero-content {
     position: absolute !important;
     left: 10vw !important;
-    top: -10px !important;
+    top: -20px !important;
     font-weight: 800;
   }
 }

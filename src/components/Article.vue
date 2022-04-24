@@ -42,6 +42,10 @@ defineProps({
   background-color: var(--accent-color);
 }
 
+.card-content {
+  background-color: var(--accent-color);
+}
+
 .content p {
     margin: 15px 0;
     line-height: 1.9;
@@ -57,7 +61,7 @@ defineProps({
   color: var(--text-primary-color);
 }
 .article-body {
-  margin: 0 6rem;
+  margin: 0 5vw;
   line-height: 1.4;
   color: var(--text-primary-color);
 }

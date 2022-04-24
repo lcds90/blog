@@ -6,6 +6,7 @@ import IDS from '@/views/GoJS/_enums';
 import { onMounted, ref, unref } from 'vue';
 import * as go from 'gojs';
 import Diagram from '@/views/GoJS/lib/createDiagram';
+import GistComponent from '@/components/Gist.vue';
 
 const info = {
   alt: 'Logo do GoJS',
@@ -36,7 +37,7 @@ const getGreeting = () => {
 
 onMounted(() => {
   const el = unref(firstDiagram) as HTMLDivElement;
-  const elGist = unref(initialConcepts) as HTMLDivElement;
+  // const elGist = unref(initialConcepts) as HTMLDivElement;
 
   const links = [ // a JavaScript Array of JavaScript objects, one per link
     { from: 'Alpha', to: 'Beta' },
@@ -57,14 +58,13 @@ onMounted(() => {
     { key: 'Delta', color: 'pink' },
   ];
   const newDiagram = new Diagram(el, nodes, links);
-  firstDiagramInstance = newDiagram.diagram;
-  firstModelInstance = newDiagram.model;
-  console.log(firstDiagramInstance.div, firstModelInstance.nodeDataArray);
+  // firstDiagramInstance = newDiagram.diagram;
+  // firstModelInstance = newDiagram.model;
 
-  const scriptEl = document.createElement('script');
-  scriptEl.setAttribute('src', 'https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js');
+  // const scriptEl = document.createElement('script');
+  // scriptEl.setAttribute('src', 'https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js');
 
-  postscribe(elGist, scriptEl.outerHTML);
+  // postscribe(elGist, scriptEl.outerHTML);
 });
 
 </script>
@@ -99,9 +99,8 @@ onMounted(() => {
         {{ t('content.concepts.title') }}
       </h2>
 
-      <div
-        ref="initialConcepts"
-        id="initialConcepts"
+      <gist-component
+        src="https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js"
       />
       <div class="diagram-card card">
         <main

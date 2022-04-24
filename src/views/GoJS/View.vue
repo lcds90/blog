@@ -25,11 +25,7 @@ useHead({
 
 <template>
   <div class="home">
-    <hero-component>
-      <template #title>
-        Seção sobre a biblioteca Go JS
-      </template>
-    </hero-component>
+    <hero-component />
     <article-list>
       <template #default>
         <basics-view />
