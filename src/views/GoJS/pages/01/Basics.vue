@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 import ArticleComponent from '@/components/Article.vue';
 import { useI18n } from 'vue-i18n';
 import IDS from '@/views/GoJS/_enums';
@@ -11,6 +12,7 @@ const info = {
   img: 'https://forum.nwoods.com/uploads/db3963/original/2X/6/62748081a15930698a68851c33e398d990750ed5.png',
 };
 const firstDiagram = ref<HTMLDivElement | null>();
+const initialConcepts = ref<HTMLDivElement | null>();
 let firstDiagramInstance: go.Diagram;
 let firstModelInstance: go.GraphLinksModel;
 const { t } = useI18n();
@@ -34,6 +36,8 @@ const getGreeting = () => {
 
 onMounted(() => {
   const el = unref(firstDiagram) as HTMLDivElement;
+  const elGist = unref(initialConcepts) as HTMLDivElement;
+
   const links = [ // a JavaScript Array of JavaScript objects, one per link
     { from: 'Alpha', to: 'Beta' },
     { from: 'Alpha', to: 'Gamma' },
@@ -56,6 +60,11 @@ onMounted(() => {
   firstDiagramInstance = newDiagram.diagram;
   firstModelInstance = newDiagram.model;
   console.log(firstDiagramInstance.div, firstModelInstance.nodeDataArray);
+
+  const scriptEl = document.createElement('script');
+  scriptEl.setAttribute('src', 'https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js');
+
+  postscribe(elGist, scriptEl.outerHTML);
 });
 
 </script>
@@ -89,6 +98,11 @@ onMounted(() => {
       <h2 class="title is-4 has-text-centered">
         {{ t('content.concepts.title') }}
       </h2>
+
+      <div
+        ref="initialConcepts"
+        id="initialConcepts"
+      />
       <div class="diagram-card card">
         <main
           ref="firstDiagram"

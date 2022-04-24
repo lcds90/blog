@@ -9,6 +9,9 @@ module.exports = {
     '@vue/airbnb',
     '@vue/typescript/recommended',
   ],
+  globals: {
+    postscribe: true,
+  },
   parserOptions: {
     ecmaVersion: 2020,
   },
