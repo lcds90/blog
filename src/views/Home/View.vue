@@ -4,7 +4,7 @@ import ArticleList from '@/components/ArticleList.vue';
 import { useHead } from '@vueuse/head';
 import { reactive, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { WelcomeView } from './UI';
+import { WelcomeView } from './pages';
 
 const { t } = useI18n();
 

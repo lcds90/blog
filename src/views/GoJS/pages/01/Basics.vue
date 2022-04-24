@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n';
 import IDS from '@/views/GoJS/_enums';
 import { onMounted, ref, unref } from 'vue';
 import * as go from 'gojs';
-import Diagram from '../lib/createDiagram';
+import Diagram from '@/views/GoJS/lib/createDiagram';
 
 const info = {
   alt: 'Logo do GoJS',
@@ -108,6 +108,9 @@ onMounted(() => {
       },
       "concepts": {
         title: "Conceitos",
+        setup: {
+          "hosting": "Todo diagrama é instanciado dentro de um elemento HTML com um id único para que seja possível visualizar o diagrama."
+        },
       },
     },
     "introduction": "Nessa seção será abordado os principais conceitos básicos de GoJS.",

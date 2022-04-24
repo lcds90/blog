@@ -4,7 +4,7 @@ import ArticleList from '@/components/ArticleListWithAside.vue';
 import { useHead } from '@vueuse/head';
 import { reactive, computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import { BasicsView, MenuView } from './UI';
+import { BasicsView, MenuView } from './pages';
 
 const siteData = reactive({
   description: 'gojs',
