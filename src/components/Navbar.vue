@@ -12,6 +12,9 @@
             :style="{borderRadius: '5px', width: 'auto', height: '200px'}"
           >
         </a>
+        <div class="navbar-item">
+          <slot name="theme" />
+        </div>
         <span
           class="navbar-burger burger"
           data-target="navbarMenu"
@@ -48,9 +51,11 @@
 
 .navbar {
 
+  background-color: var(--background-color-primary) !important;
+  border-bottom: 2px solid var(--accent-color);
   a {
     font-weight: 900;
-    color: #2c3e50;
+    color: var(--text-color-primary);
 
     &.router-link-exact-active {
       color: $link;

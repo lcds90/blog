@@ -37,6 +37,11 @@ defineProps({
 </template>
 
 <style>
+
+.card {
+  background-color: var(--accent-color);
+}
+
 .content p {
     margin: 15px 0;
     line-height: 1.9;
@@ -45,20 +50,22 @@ defineProps({
   font-size: 2rem;
   font-weight: lighter;
   line-height: 2;
+  color: var(--text-primary-color);
 }
 .article-subtitle {
   margin-bottom: 3rem;
-  color: #909AA0;
+  color: var(--text-primary-color);
 }
 .article-body {
   margin: 0 6rem;
   line-height: 1.4;
+  color: var(--text-primary-color);
 }
 
 .author-image {
     position: absolute;
     top: -30px;
-    left: 50%;
+    left: 50px;
     width: 60px;
     height: 60px;
     margin-left: -30px;
@@ -72,4 +79,18 @@ defineProps({
 .media-content {
   margin-top: 3rem;
 }
+
+@media screen and (min-width: 768px) {
+  .author-image {
+    position: absolute;
+    top: -30px;
+    left: 80px;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    border: 3px solid #ccc;
+    border-radius: 50%;
+  }
+}
+
 </style>

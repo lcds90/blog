@@ -27,7 +27,7 @@ useHead({
   <div class="home">
     <hero-component>
       <template #title>
-        Seção sobre a biblioteca <h2>Go JS</h2>
+        Seção sobre a biblioteca Go JS
       </template>
     </hero-component>
     <article-list>

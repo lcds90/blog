@@ -29,34 +29,60 @@ const getGreeting = () => {
 </script>
 
 <template>
-  <article-component
-    subtitle="Apaixonado por tecnologia, desenvolvedor front-end e apaixonado pelo mundo web e pai de 9 gatinhos."
-    :title="getGreeting()"
-  >
-    <template #image>
-      <img
-        :alt="info.alt"
-        class="author-image"
-        :src="info.img"
-      >
-    </template>
-    <template #content>
-      <p
-        class="has-text-primary"
-        v-html="t('introduction')"
-      />
-      <hr>
-      <p
-        class="has-text-secondary"
-        v-html="t('about')"
-      />
-      <hr>
-      <h3 class="title is-6 has-text-centered">
-        {{ t('sharing') }}
-      </h3>
-    </template>
-  </article-component>
+  <div class="welcome-container">
+    <article-component
+      subtitle="Apaixonado por tecnologia, desenvolvedor front-end e apaixonado pelo mundo web e pai de 9 gatinhos."
+      :title="getGreeting()"
+    >
+      <template #image>
+        <img
+          :alt="info.alt"
+          class="author-image"
+          :src="info.img"
+        >
+      </template>
+      <template #content>
+        <p
+          class="has-text-primary"
+          v-html="t('introduction')"
+        />
+        <hr>
+        <p
+          class="has-text-secondary"
+          v-html="t('about')"
+        />
+        <hr>
+        <h3 class="title is-6 has-text-centered">
+          {{ t('sharing') }}
+        </h3>
+      </template>
+    </article-component>
+  </div>
 </template>
+
+<style>
+.welcome-container {
+  margin-top: 15vw;
+}
+
+@media screen and (min-width: 768px) {
+  .welcome-container {
+    margin-top: 9vw;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .welcome-container {
+    margin-top: 7vw;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .welcome-container {
+    margin-top: 5vw;
+  }
+}
+</style>
 
 <i18n locale="en">
 {
