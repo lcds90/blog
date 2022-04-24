@@ -1,5 +1,6 @@
 import * as go from 'gojs';
 import clone from 'lodash.clonedeep';
+import RoundedRectangle from './generators/RoundedRectangle';
 
 class createDiagram {
   private _diagram: go.Diagram;
@@ -37,14 +38,8 @@ class createDiagram {
     this._diagram.addDiagramListener('InitialLayoutCompleted', (e) => {
       this._diagram.zoomToFit();
     });
-    this._diagram.nodeTemplate = new go.Node('Auto') // the Shape will go around the TextBlock
-      .add(new go.Shape('RoundedRectangle')
-      // Shape.fill is bound to Node.data.color
-        .bind('fill', 'color'))
-      .add(new go.TextBlock({ margin: 8 }) // Specify a margin to add some room around the text
-      // TextBlock.text is bound to Node.data.key
-        .bind('text', 'key'));
-    // return this._diagram;
+    const nodeTemplate = new RoundedRectangle('key', 'color');
+    this._diagram.nodeTemplate = nodeTemplate.template;
   }
 
   private createDiagram(): go.Diagram {
@@ -54,9 +49,9 @@ class createDiagram {
   }
 
   private createModel(): go.GraphLinksModel {
-    const model = new go.GraphLinksModel(this._nodes, this._links);
-    // model.nodeDataArray = this._nodes;
-    // model.linkDataArray = this._links;
+    const model = new go.GraphLinksModel();
+    model.nodeDataArray = this._nodes;
+    model.linkDataArray = this._links;
     model.nodeKeyProperty = 'key';
     model.nodeCategoryProperty = 'type';
     return model;
