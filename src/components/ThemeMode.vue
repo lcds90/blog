@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 const userTheme = ref('light-theme');
+
+const { t } = useI18n();
 
 const setTheme = (theme: string) => {
   localStorage.setItem('user-theme', theme);
@@ -11,7 +14,6 @@ const setTheme = (theme: string) => {
 
 const toggleTheme = () => {
   const activeTheme = localStorage.getItem('user-theme');
-  console.log(activeTheme);
 
   if (activeTheme === 'light-theme') {
     setTheme('dark-theme');
@@ -34,7 +36,7 @@ const getMediaPreference = () => {
 const getTheme = () => localStorage.getItem('user-theme');
 
 onMounted(() => {
-  const initUserTheme = getMediaPreference() || getTheme();
+  const initUserTheme = getTheme() || getMediaPreference();
   setTheme(initUserTheme);
 });
 
@@ -57,14 +59,14 @@ onMounted(() => {
         class="theme-message p-2"
       >
         <span>🌙</span>
-        Dark mode ativado
+        <span>{{ t('darkMode') }}</span>
       </span>
       <span
         v-else
         class="theme-message p-2"
       >
         <span>☀️</span>
-        Light mode ativado
+        <span>{{ t('lightMode') }}</span>
       </span>
     </label>
   </div>
@@ -173,3 +175,17 @@ h6 {
   }
 }
 </style>
+
+<i18n locale="en">
+{
+  "darkMode": "Dark mode activated",
+  "lightMode": "Light mode activated"
+}
+</i18n>
+
+<i18n locale="pt">
+{
+  "darkMode": "Modo escuro ativado",
+  "lightMode": "Modo claro ativado"
+}
+</i18n>

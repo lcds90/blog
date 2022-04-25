@@ -9,15 +9,16 @@ const links = [
     path: '/',
   },
   {
-    name: 'Sobre o projeto',
-    path: '/about',
+    name: 'GoJS',
+    path: '/gojs',
   },
+
 ];
 
 const articles = [
   {
-    name: 'GoJS',
-    path: '/gojs',
+    name: 'Sobre o projeto',
+    path: '/about',
   },
 ];
 

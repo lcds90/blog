@@ -4,6 +4,10 @@ import clone from 'lodash.clonedeep';
 class createDiagram {
   private _diagram: go.Diagram;
 
+  private _config: {
+    direction: number;
+  }
+
   private _model: go.GraphLinksModel;
 
   private _links: go.ObjectData[];
@@ -23,6 +27,9 @@ class createDiagram {
     this._nodes = {
       data: clone(modelNodeData),
       templates: nodeTemplates,
+    };
+    this._config = {
+      direction: 0,
     };
     const newDiagram = this.createDiagram();
     const newModel = this.createModel();
@@ -63,9 +70,8 @@ class createDiagram {
   }
 
   private generateLayout() {
-    console.log(this._diagram);
     const layoutConfigs = {
-      direction: 0,
+      direction: this._config.direction,
     };
 
     const layout = new go.LayeredDigraphLayout();
@@ -78,8 +84,6 @@ class createDiagram {
     const templateMap = new go.Map<string, go.Node>();
 
     this._nodes.templates.forEach(({ key, template }) => {
-      console.log(key, template);
-
       templateMap.add(key, template);
     });
 

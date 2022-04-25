@@ -2,17 +2,18 @@
 import { onMounted, ref, unref } from 'vue';
 import { useI18n } from 'vue-i18n';
 
+const { locale, t } = useI18n();
+
 const langs = ref([{
   code: 'en',
-  name: 'English',
+  name: t('langs.en'),
 }, {
   code: 'pt',
-  name: 'Português',
+  name: t('langs.pt'),
 }]);
 
 const userLocale = ref('locale-pt');
 const selectLocale = ref<HTMLSelectElement>();
-const { locale } = useI18n();
 const setLocale = (userLocaleChoice: string) => {
   localStorage.setItem('user-locale', userLocaleChoice);
   userLocale.value = userLocaleChoice;
@@ -22,12 +23,12 @@ const toggleLocale = () => {
   const el = unref(selectLocale) as HTMLSelectElement;
   const activeLocale = localStorage.getItem('user-locale');
 
-  if (activeLocale === 'locale-pt') {
+  if (activeLocale === 'pt') {
     locale.value = 'en';
-    setLocale('locale-en');
+    setLocale('en');
   } else {
     locale.value = 'pt';
-    setLocale('locale-pt');
+    setLocale('pt');
   }
   el.value = 'choose-locale';
 };
@@ -35,7 +36,7 @@ const toggleLocale = () => {
 const getLocale = () => localStorage.getItem('user-locale');
 
 onMounted(() => {
-  const initUserLocale = getLocale() || 'locale-pt';
+  const initUserLocale = getLocale() || 'pt';
   setLocale(initUserLocale);
 });
 
@@ -59,7 +60,7 @@ onMounted(() => {
             selected
             value="choose-locale"
           >
-            Selecione o seu idioma
+            {{ t('choose') }}
           </option>
           <option
             :key="`Lang${i}`"
@@ -71,18 +72,18 @@ onMounted(() => {
         </select>
       </div>
       <span
-        v-if="userLocale === 'locale-pt'"
+        v-if="userLocale === 'pt'"
         class="locale-message p-2"
       >
         <span>🇧🇷</span>
-        Português
+        {{ t('langs.pt') }}
       </span>
       <span
         v-else
         class="locale-message p-2"
       >
         <span>🇺🇸</span>
-        English
+        {{ t('langs.en') }}
       </span>
     </div>
   </div>
@@ -163,3 +164,23 @@ onMounted(() => {
   }
 }
 </style>
+
+<i18n locale="en">
+{
+  "choose": "Choose your language",
+  "langs": {
+    "en": "English",
+    "pt": "Portuguese"
+  }
+}
+</i18n>
+
+<i18n locale="pt">
+{
+  "choose": "Escolha seu idioma",
+  "langs": {
+    "en": "Inglês",
+    "pt": "Português"
+  }
+}
+</i18n>

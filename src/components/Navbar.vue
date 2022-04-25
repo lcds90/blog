@@ -29,14 +29,16 @@
         <div class="navbar-end">
           <slot name="navbar-links" />
           <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Artigos
-            </a>
+            <span class="navbar-link" />
             <div class="navbar-dropdown">
               <slot name="navbar-menu-links" />
               <hr class="navbar-divider">
               <div class="navbar-item">
-                Portfólio
+                <a
+                  class="button is-link is-rounded is-outlined"
+                  href="https://lcds.vercel.app/"
+                  target="_blank"
+                >Portfolio</a>
               </div>
             </div>
           </div>
