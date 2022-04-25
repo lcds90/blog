@@ -33,11 +33,6 @@ onMounted(() => {
 
 <style>
 
-.container-gist {
-    width: 110%;
-    margin-left: -5%;
-}
-
 .blob-wrapper {
   margin: auto;
   width: 100%;

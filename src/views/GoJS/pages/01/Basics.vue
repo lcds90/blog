@@ -7,41 +7,26 @@ import { onMounted, ref, unref } from 'vue';
 import * as go from 'gojs';
 import Diagram from '@/views/GoJS/lib/createDiagram';
 import GistComponent from '@/components/Gist.vue';
+import ShowMore from '@/components/ShowMore.vue';
+import RoundedRectangle from '@/views/GoJS/lib/generators/RoundedRectangle';
 
 const info = {
   alt: 'Logo do GoJS',
   img: 'https://forum.nwoods.com/uploads/db3963/original/2X/6/62748081a15930698a68851c33e398d990750ed5.png',
 };
-const firstDiagram = ref<HTMLDivElement | null>();
-const initialConcepts = ref<HTMLDivElement | null>();
-let firstDiagramInstance: go.Diagram;
-let firstModelInstance: go.GraphLinksModel;
-const { t } = useI18n();
-
-const getGreeting = () => {
-  const d = new Date();
-  const time = d.getHours();
-
-  if (time < 12) {
-    return 'Good morning!';
-  }
-  if (time > 12) {
-    return 'Good afternoon!';
-  }
-  if (time === 12) {
-    return 'Go eat lunch!';
-  }
-
-  return 'whatever';
+let diagramWithNoNodesInstance: go.Diagram;
+const diagramWithNoNodes = ref<HTMLDivElement | null>();
+const generateDiagramWithNoNodes = (el: HTMLDivElement) => {
+  const newDiagram = new Diagram(el, [], [], []);
+  diagramWithNoNodesInstance = newDiagram.diagram;
 };
 
-onMounted(() => {
-  const el = unref(firstDiagram) as HTMLDivElement;
-  // const elGist = unref(initialConcepts) as HTMLDivElement;
-
+const diagramWithNodes = ref<HTMLDivElement | null>();
+let diagramWithNodesInstance: go.Diagram;
+const generateDiagramWithNodes = (el: HTMLDivElement) => {
   const links = [ // a JavaScript Array of JavaScript objects, one per link
-    { from: 'Alpha', to: 'Beta' },
-    { from: 'Alpha', to: 'Gamma' },
+    { from: 'Hello', to: 'GoJS' },
+    { from: 'World', to: 'Gamma' },
     { from: 'Beta', to: 'Beta' },
     { from: 'Gamma', to: 'Delta' },
     { from: 'Delta', to: 'Alpha' },
@@ -49,22 +34,31 @@ onMounted(() => {
   const nodes = [ // a JavaScript Array of JavaScript objects, one per node;
   // the "color" property is added specifically for this app
     // eslint-disable-next-line vue/sort-keys
-    { key: 'Alpha', color: 'lightblue' },
+    { key: 'Hello', color: 'lightblue' },
     // eslint-disable-next-line vue/sort-keys
-    { key: 'Beta', color: 'orange' },
+    { key: 'GoJS', color: 'orange' },
     // eslint-disable-next-line vue/sort-keys
-    { key: 'Gamma', color: 'lightgreen' },
+    { key: 'World', color: 'lightgreen' },
     // eslint-disable-next-line vue/sort-keys
-    { key: 'Delta', color: 'pink' },
+    { key: '🌐', color: 'pink' },
   ];
-  const newDiagram = new Diagram(el, nodes, links);
-  // firstDiagramInstance = newDiagram.diagram;
-  // firstModelInstance = newDiagram.model;
 
-  // const scriptEl = document.createElement('script');
-  // scriptEl.setAttribute('src', 'https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js');
+  const rectangle = new RoundedRectangle('key', 'color').template;
+  const nodeTemplates = nodes.map(
+    (node) => ({ ...node, template: rectangle }),
+  );
+  const newDiagram = new Diagram(el, nodes, links, nodeTemplates);
+  diagramWithNodesInstance = newDiagram.diagram;
+};
 
-  // postscribe(elGist, scriptEl.outerHTML);
+const { t } = useI18n();
+
+onMounted(() => {
+  const elDiagramWithNoNodes = unref(diagramWithNoNodes) as HTMLDivElement;
+  generateDiagramWithNoNodes(elDiagramWithNoNodes);
+
+  const elDiagramWithNodes = unref(diagramWithNodes) as HTMLDivElement;
+  generateDiagramWithNodes(elDiagramWithNodes);
 });
 
 </script>
@@ -83,7 +77,7 @@ onMounted(() => {
     </template>
     <template #content>
       <p
-        class="has-text-primary"
+        class="has-text-primary has-text-centered is-italic has-text-weight-bold is-size-5"
         v-html="t('introduction')"
       />
       <hr>
@@ -98,16 +92,33 @@ onMounted(() => {
       <h2 class="title is-4 has-text-centered">
         {{ t('content.concepts.title') }}
       </h2>
-
-      <gist-component
-        src="https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js"
+      <section v-html="t('content.concepts.section.hosting')" />
+      <div
+        ref="diagramWithNoNodes"
+        class="diagram"
+        id="diagramWithNoNodes"
       />
-      <div class="diagram-card card">
-        <main
-          ref="firstDiagram"
-          id="firstDiagram"
+      <show-more>
+        <gist-component
+          src="https://gist.github.com/lcds90/05099d541f2f7a60850f2659f1b21d25.js"
         />
-      </div>
+      </show-more>
+      <section
+        class="mt-4"
+        v-html="t('content.concepts.section.consist')"
+      />
+      <section class="diagram-card card">
+        <div
+          ref="diagramWithNodes"
+          class="diagram"
+          id="diagramWithNodes"
+        />
+      </section>
+      <show-more>
+        <gist-component
+          src="https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js"
+        />
+      </show-more>
     </template>
   </article-component>
 </template>
@@ -121,8 +132,10 @@ onMounted(() => {
       },
       "concepts": {
         title: "Conceitos",
-        setup: {
-          "hosting": "Todo diagrama é instanciado dentro de um elemento HTML com um id único para que seja possível visualizar o diagrama."
+        section: {
+          "hosting": "<a href=\"https://gojs.net/latest/learn/#GoJSTutorials\" target=\"_blank\">Após o carregamento da biblioteca. </a><br>Todo diagrama é instanciado dentro de um elemento HTML com um <strong class=\"has-text-primary\">id único</strong> para que seja possível visualizar o diagrama, lembre-se de definir o tamanho de acordo com sua necessidade.",
+          "consist": "O básico para incialização de um diagrama que precisamos são de <strong>Nodes</strong> e <strong>Links</strong>, eles são dados referente a um modelo especifico do diagrama, nesse primeiro caso se trata de um <em>GraphLinksModel.</em>",
+          "init": "A inicialização se trata da geração de uma nova instância de <strong>go.Diagram</strong>"
         },
       },
     },
@@ -132,9 +145,18 @@ onMounted(() => {
 </i18n>
 
 <style>
-#firstDiagram {
+
+.diagram {
   width: 100%;
-  height: 500px;
-  background: rgb(77, 77, 77);
+  background: var(--background-color-primary);
+  border: 1.5px solid var(--text-primary-color);
+}
+
+#diagramWithNodes {
+  height: 200px;
+}
+
+#diagramWithNoNodes {
+  height: 100px;
 }
 </style>

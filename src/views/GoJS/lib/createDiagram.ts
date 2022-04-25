@@ -1,6 +1,5 @@
 import * as go from 'gojs';
 import clone from 'lodash.clonedeep';
-import RoundedRectangle from './generators/RoundedRectangle';
 
 class createDiagram {
   private _diagram: go.Diagram;
@@ -9,15 +8,22 @@ class createDiagram {
 
   private _links: go.ObjectData[];
 
-  private _nodes: go.ObjectData[];
+  private _nodes: {
+    data: go.ObjectData[],
+    templates: go.ObjectData[],
+  };
 
   constructor(
     private diagramEl: HTMLDivElement,
     modelNodeData: go.ObjectData[],
     modelLinkData: go.ObjectData[],
+    nodeTemplates: go.ObjectData[],
   ) {
     this._links = clone(modelLinkData);
-    this._nodes = clone(modelNodeData);
+    this._nodes = {
+      data: clone(modelNodeData),
+      templates: nodeTemplates,
+    };
     const newDiagram = this.createDiagram();
     const newModel = this.createModel();
     this._diagram = newDiagram;
@@ -38,8 +44,7 @@ class createDiagram {
     this._diagram.addDiagramListener('InitialLayoutCompleted', (e) => {
       this._diagram.zoomToFit();
     });
-    const nodeTemplate = new RoundedRectangle('key', 'color');
-    this._diagram.nodeTemplate = nodeTemplate.template;
+    this._diagram.nodeTemplateMap = this.generateTemplateMaps();
   }
 
   private createDiagram(): go.Diagram {
@@ -50,10 +55,10 @@ class createDiagram {
 
   private createModel(): go.GraphLinksModel {
     const model = new go.GraphLinksModel();
-    model.nodeDataArray = this._nodes;
+    model.nodeDataArray = this._nodes.data;
     model.linkDataArray = this._links;
     model.nodeKeyProperty = 'key';
-    model.nodeCategoryProperty = 'type';
+    model.nodeCategoryProperty = 'key';
     return model;
   }
 
@@ -67,6 +72,18 @@ class createDiagram {
     layout.direction = layoutConfigs.direction;
     layout.packOption = go.LayeredDigraphLayout.PackMedian;
     return layout;
+  }
+
+  private generateTemplateMaps() {
+    const templateMap = new go.Map<string, go.Node>();
+
+    this._nodes.templates.forEach(({ key, template }) => {
+      console.log(key, template);
+
+      templateMap.add(key, template);
+    });
+
+    return templateMap;
   }
 }
 
