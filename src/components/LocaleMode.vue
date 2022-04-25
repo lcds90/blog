@@ -22,12 +22,12 @@ const toggleLocale = () => {
   const el = unref(selectLocale) as HTMLSelectElement;
   const activeLocale = localStorage.getItem('user-locale');
 
-  if (activeLocale === 'locale-pt') {
+  if (activeLocale === 'pt') {
     locale.value = 'en';
-    setLocale('locale-en');
+    setLocale('en');
   } else {
     locale.value = 'pt';
-    setLocale('locale-pt');
+    setLocale('pt');
   }
   el.value = 'choose-locale';
 };
@@ -35,7 +35,7 @@ const toggleLocale = () => {
 const getLocale = () => localStorage.getItem('user-locale');
 
 onMounted(() => {
-  const initUserLocale = getLocale() || 'locale-pt';
+  const initUserLocale = getLocale() || 'pt';
   setLocale(initUserLocale);
 });
 

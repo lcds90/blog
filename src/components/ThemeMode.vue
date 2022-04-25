@@ -11,7 +11,6 @@ const setTheme = (theme: string) => {
 
 const toggleTheme = () => {
   const activeTheme = localStorage.getItem('user-theme');
-  console.log(activeTheme);
 
   if (activeTheme === 'light-theme') {
     setTheme('dark-theme');
@@ -34,7 +33,7 @@ const getMediaPreference = () => {
 const getTheme = () => localStorage.getItem('user-theme');
 
 onMounted(() => {
-  const initUserTheme = getMediaPreference() || getTheme();
+  const initUserTheme = getTheme() || getMediaPreference();
   setTheme(initUserTheme);
 });
 

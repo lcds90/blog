@@ -5,7 +5,6 @@ import { onMounted, ref, unref } from 'vue';
 const hero = ref<HTMLElement>();
 
 const startAnimation = (el: HTMLElement) => {
-  console.log('começando?', el.id);
   gsap.from(`#${el.id}`, {
     duration: 10,
     ease: 'power3.out',

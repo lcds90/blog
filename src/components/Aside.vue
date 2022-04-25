@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue';
+
 export interface IItem {
   link: string,
   label: string,
@@ -14,7 +16,7 @@ list: IListItem[],
 }
 
 const goto = (refName: string) => {
-  const element = document.getElementById(refName) as HTMLDivElement;
+  const element = document.getElementById(`${refName}`) as HTMLDivElement;
   const elementToActive = document.getElementById(`${refName}-link`) as HTMLDivElement;
   const getActiveElement = document.querySelector('.menu-list .is-active') as HTMLDivElement;
 
@@ -27,21 +29,24 @@ const goto = (refName: string) => {
   window.scrollTo(0, top);
 };
 
-defineProps<IProps>();
+const props = defineProps<IProps>();
+
+const listMenu = computed(() => props.list);
+
 </script>
 
 <template>
   <aside class="menu card p-4">
     <template
       :key="menu.title"
-      v-for="menu in list"
+      v-for="menu in listMenu"
     >
       <p class="menu-label">
-        {{ menu.title }}
+        GoJS
       </p>
       <ul class="menu-list">
         <li>
-          <a class="is-active">Básico</a>
+          <a class="is-active">{{ menu.title }}</a>
           <ul>
             <li
               :key="menuItem.link"

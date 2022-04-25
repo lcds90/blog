@@ -66,8 +66,9 @@ onMounted(() => {
 
 <template>
   <article-component
-    subtitle="Apaixonado por tecnologia, desenvolvedor front-end e apaixonado pelo mundo web e pai de 9 gatinhos."
+    :subtitle="t('subtitle')"
     :title="t('title')"
+    id=""
   >
     <template #image>
       <img
@@ -132,6 +133,28 @@ onMounted(() => {
   </article-component>
 </template>
 
+<i18n locale="en">
+{
+    "content": {
+      "what_is": {
+        "content": "GoJS is a library for creating interactive diagrams through browsers. Consisting of data in objects that will be present in the diagram.<br>To involve you in the development cycle, it will be based on the concept of classes to facilitate understanding with the library and use of Typescript for data typing, <em>only in the introductory moment will be based on Javascript for knowledge</em>, but in the next sessions we will have the combination of <strong>Typescript</strong> using the framework <strong>Vue 3</strong> and <strong>Pinia</strong>.",
+        "title": "What is GoJS?",
+      },
+      "concepts": {
+        title: "Concepts",
+        section: {
+          "hosting": "<a href=\"https://gojs.net/latest/learn/#GoJSTutorials\" target=\"_blank\">After loading the library. </a><br>Every diagram is instantiated inside an HTML element with a <strong class=\"has-text-primary\">unique id</strong> so you can view the diagram, remember to set the size according to your need.",
+          "consist": "The basics for initialization of a diagram we need are <strong>Nodes</strong> and <strong>Links</strong>, they are data referring to a specific model of the diagram, in this first case it is an <em> GraphLinksModel.</em>",
+          "init": "Initialization is about generating a new instance of <strong>go.Diagram</strong>"
+        },
+      },
+    },
+    "introduction": "In this section, the main basic concepts of GoJS will be covered. It is highly recommended that you already have a good consolidated base on HTML, CSS and Javascript as a prerequisite.",
+    "title": "Basic concepts",
+    "subtitle": "What you need to start understanding the GoJS ecosystem"
+}
+</i18n>
+
 <i18n locale="pt">
 {
     "content": {
@@ -148,8 +171,9 @@ onMounted(() => {
         },
       },
     },
-    "introduction": "Nessa seção será abordado os principais conceitos básicos de GoJS.",
-    "title": "Conceitos básicos"
+    "introduction": "Nessa seção será abordado os principais conceitos básicos de GoJS. É muito recomendado que já tenha como pré-requisito uma boa base consolidada sobre HTML, CSS e Javascript.",
+    "title": "Conceitos básicos",
+    "subtitle": "O necessário para começar a entender o ecossistema de GoJS"
 }
 </i18n>
 
@@ -167,5 +191,10 @@ onMounted(() => {
 
 #diagramWithNoNodes {
   height: 100px;
+}
+
+strong {
+  color: var(--text-primary-color);
+  text-shadow: 0 2px 5px rgba(0,0,0,0.25);
 }
 </style>
