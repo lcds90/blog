@@ -35,13 +35,14 @@ onMounted(() => {
 
 .blob-wrapper {
   margin: auto;
-  width: 100%;
+  width: 90%;
   padding: 0 7px !important;
 }
 
 .gist-data {
   background-color: var(--accent-color) !important;
   height: 100%;
+  overflow: hidden;
   border-bottom: 1px solid var(--text-primary-color) !important;
 }
 
@@ -52,6 +53,8 @@ onMounted(() => {
 .gist-meta {
   background-color: var(--accent-color) !important;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.15);
+  width: 75%;
+  margin: 10px auto;
   color: var(--text-primary-color) !important;
 }
 

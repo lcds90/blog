@@ -1,5 +1,31 @@
+<script setup lang="ts">
+import { gsap } from 'gsap';
+import { onMounted, ref, unref } from 'vue';
+
+const hero = ref<HTMLElement>();
+
+const startAnimation = (el: HTMLElement) => {
+  console.log('começando?', el.id);
+  gsap.from(`#${el.id}`, {
+    duration: 10,
+    ease: 'power3.out',
+    opacity: 1,
+    y: 1000,
+  });
+};
+
+onMounted(() => {
+  const el = unref(hero) as HTMLElement;
+  startAnimation(el);
+});
+</script>
+
 <template>
-  <section class="hero is-small is-bold">
+  <section
+    ref="hero"
+    class="hero is-small is-bold"
+    id="hero"
+  >
     <div class="hero-body">
       <div class="hero-container container p-4" />
     </div>

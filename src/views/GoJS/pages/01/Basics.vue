@@ -9,6 +9,7 @@ import Diagram from '@/views/GoJS/lib/createDiagram';
 import GistComponent from '@/components/Gist.vue';
 import ShowMore from '@/components/ShowMore.vue';
 import RoundedRectangle from '@/views/GoJS/lib/generators/RoundedRectangle';
+import CodePen from '@/components/CodePen.vue';
 
 const info = {
   alt: 'Logo do GoJS',
@@ -114,10 +115,18 @@ onMounted(() => {
           id="diagramWithNodes"
         />
       </section>
-      <show-more>
-        <gist-component
-          src="https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js"
-        />
+      <show-more have-pen>
+        <template #default>
+          <gist-component
+            src="https://gist.github.com/lcds90/c840bbd5bfac5275293f793efbe2fac4.js"
+          />
+        </template>
+        <template #pen>
+          <code-pen
+            link="https://codepen.io/lcds/pen/popmWBP"
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          />
+        </template>
       </show-more>
     </template>
   </article-component>
@@ -127,7 +136,7 @@ onMounted(() => {
 {
     "content": {
       "what_is": {
-        "content": "GoJS, se trata de uma biblioteca para a criação de diagramas interativos através de navegadores. Consistindo dados em objetos que estarão presentes no diagrama.<br>Todo o desenvolvimento será baseado no conceito de classes para facilitar o entendimento com a biblioteca.",
+        "content": "GoJS, se trata de uma biblioteca para a criação de diagramas interativos através de navegadores. Consistindo dados em objetos que estarão presentes no diagrama.<br>Para te envolver sobre o ciclo de desenvolvimento será baseado no conceito de classes para facilitar o entendimento com a biblioteca e utilização de Typescript para tipagem de dados, <em>apenas no momento introdutório será baseado em Javascript para conhecimento</em>, porém nas próximas sessões iremos ter a junção de <strong>Typescript</strong> com a utilização do framework <strong>Vue 3</strong> e <strong>Pinia</strong>.",
         "title": "O que é o GoJS?",
       },
       "concepts": {

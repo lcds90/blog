@@ -37,7 +37,6 @@ onMounted(() => {
     data-default-tab="html,result"
     data-editable="true"
     data-height="300"
-    data-preview="true"
     data-slug-hash="popmWBP"
     data-user="lcds"
     style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"

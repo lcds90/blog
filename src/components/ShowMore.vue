@@ -1,23 +1,59 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+defineProps({
+  havePen: {
+    default: false,
+    required: false,
+    type: Boolean,
+  },
+});
+
 const showMore = ref(false);
+const showing = ref('gist');
+
+const toggleButtons = (optionToShow: string) => {
+  if (optionToShow === 'pen' && showing.value === 'gist' && showMore.value) {
+    showing.value = 'pen';
+    return;
+  }
+
+  if (optionToShow === 'gist' && showing.value === 'pen' && showMore.value) {
+    showing.value = 'gist';
+    return;
+  }
+
+  showing.value = optionToShow;
+  showMore.value = !showMore.value;
+};
 
 </script>
 
 <template>
   <button
     class="show-more-button button is-link is-rounded is-outlined my-4"
-    @click="showMore = !showMore"
+    @click="toggleButtons('gist')"
   >
     💻
-    {{ showMore ? 'Hide the code' : 'Show me the code' }}
+    {{ showMore && showing === 'gist' ? 'Hide the gist' : 'Show me the gist' }}
+  </button>
+  <button
+    v-if="havePen"
+    class="show-more-button button is-link is-rounded is-outlined my-4 ml-2"
+    @click="toggleButtons('pen')"
+  >
+    🖋
+    {{ showMore && showing === 'pen' ? 'Hide the pen' : 'Show me the pen' }}
   </button>
   <div
     class="container-of-contents"
     :class="showMore ? 'show-more' : 'show-less blur'"
   >
-    <slot />
+    <slot v-if="showing === 'gist'" />
+    <slot
+      v-if="showing === 'pen'"
+      name="pen"
+    />
   </div>
 </template>
 
@@ -27,7 +63,7 @@ const showMore = ref(false);
   width: 110%;
   margin-left: -5%;
   margin-bottom: 20px;
-  overflow-y: hidden;
+  overflow: hidden;
   padding-bottom: 0px;
   border-bottom: 5px double var(--background-color-secondary);
   filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
@@ -63,9 +99,6 @@ const showMore = ref(false);
 }
 
 .show-more-button {
-  /* position: absolute; */
-  bottom: 0;
-  /* width: 100%; */
   height: 20px;
   z-index: 25;
 }

@@ -14,6 +14,5 @@ const head = createHead();
 createApp(App).use(i18n)
   .use(router)
   .use(store)
-  .use(i18n)
   .use(head)
   .mount('#app');
