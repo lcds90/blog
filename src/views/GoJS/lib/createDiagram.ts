@@ -8,15 +8,22 @@ class createDiagram {
 
   private _links: go.ObjectData[];
 
-  private _nodes: go.ObjectData[];
+  private _nodes: {
+    data: go.ObjectData[],
+    templates: go.ObjectData[],
+  };
 
   constructor(
     private diagramEl: HTMLDivElement,
     modelNodeData: go.ObjectData[],
     modelLinkData: go.ObjectData[],
+    nodeTemplates: go.ObjectData[],
   ) {
     this._links = clone(modelLinkData);
-    this._nodes = clone(modelNodeData);
+    this._nodes = {
+      data: clone(modelNodeData),
+      templates: nodeTemplates,
+    };
     const newDiagram = this.createDiagram();
     const newModel = this.createModel();
     this._diagram = newDiagram;
@@ -37,14 +44,7 @@ class createDiagram {
     this._diagram.addDiagramListener('InitialLayoutCompleted', (e) => {
       this._diagram.zoomToFit();
     });
-    this._diagram.nodeTemplate = new go.Node('Auto') // the Shape will go around the TextBlock
-      .add(new go.Shape('RoundedRectangle')
-      // Shape.fill is bound to Node.data.color
-        .bind('fill', 'color'))
-      .add(new go.TextBlock({ margin: 8 }) // Specify a margin to add some room around the text
-      // TextBlock.text is bound to Node.data.key
-        .bind('text', 'key'));
-    // return this._diagram;
+    this._diagram.nodeTemplateMap = this.generateTemplateMaps();
   }
 
   private createDiagram(): go.Diagram {
@@ -54,11 +54,11 @@ class createDiagram {
   }
 
   private createModel(): go.GraphLinksModel {
-    const model = new go.GraphLinksModel(this._nodes, this._links);
-    // model.nodeDataArray = this._nodes;
-    // model.linkDataArray = this._links;
+    const model = new go.GraphLinksModel();
+    model.nodeDataArray = this._nodes.data;
+    model.linkDataArray = this._links;
     model.nodeKeyProperty = 'key';
-    model.nodeCategoryProperty = 'type';
+    model.nodeCategoryProperty = 'key';
     return model;
   }
 
@@ -72,6 +72,18 @@ class createDiagram {
     layout.direction = layoutConfigs.direction;
     layout.packOption = go.LayeredDigraphLayout.PackMedian;
     return layout;
+  }
+
+  private generateTemplateMaps() {
+    const templateMap = new go.Map<string, go.Node>();
+
+    this._nodes.templates.forEach(({ key, template }) => {
+      console.log(key, template);
+
+      templateMap.add(key, template);
+    });
+
+    return templateMap;
   }
 }
 

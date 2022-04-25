@@ -75,7 +75,7 @@ onMounted(() => {
 
 :root {
   --background-color-primary: #d4d4d4;
-  --background-color-secondary: #fafafa;
+  --background-color-secondary: #bdbdbd;
   --accent-color: #e0e0e0;
   --text-primary-color: #000000;
   --primary-color: #{$pink};

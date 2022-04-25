@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Use the debug version for better information about console errors -->
+    <script src="https://unpkg.com/gojs/release/go-debug.js"></script>
+
+    <div id="helloGoJSWorld" style="width:400px; height:150px"></div>
+
+    <script>
+        // First param is Element || ID as string, you can pass options for the diagram in the second parameter
+        const helloGoJSWorld = new go.Diagram("helloGoJSWorld", {});
+    </script>
+</body>
+
+</html>

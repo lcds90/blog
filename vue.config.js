@@ -10,7 +10,6 @@ module.exports = defineConfig({
       },
     },
   },
-
   pluginOptions: {
     i18n: {
       compositionOnly: false,
