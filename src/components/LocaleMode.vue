@@ -17,6 +17,7 @@ const selectLocale = ref<HTMLSelectElement>();
 const setLocale = (userLocaleChoice: string) => {
   localStorage.setItem('user-locale', userLocaleChoice);
   userLocale.value = userLocaleChoice;
+  locale.value = userLocaleChoice;
 };
 
 const toggleLocale = () => {
@@ -24,12 +25,11 @@ const toggleLocale = () => {
   const activeLocale = localStorage.getItem('user-locale');
 
   if (activeLocale === 'pt') {
-    locale.value = 'en';
     setLocale('en');
   } else {
-    locale.value = 'pt';
     setLocale('pt');
   }
+
   el.value = 'choose-locale';
 };
 

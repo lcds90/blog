@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import AsideView, { IProps } from '@/components/Aside.vue';
-import { useHead } from '@vueuse/head';
-import { reactive, computed, ref } from 'vue';
+import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
 import IDS from '@/views/GoJS/_enums';
 
