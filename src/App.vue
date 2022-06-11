@@ -12,7 +12,10 @@ const links = [
     name: 'GoJS',
     path: '/gojs',
   },
-
+  {
+    name: 'Vue 3',
+    path: '/vue',
+  },
 ];
 
 const articles = [
