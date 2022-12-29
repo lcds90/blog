@@ -1,29 +1,50 @@
 # lcds-blog
 
-## Project setup
+✨ Esse projeto se trata de meu blog criado para compartilhamento de conhecimento do mundo de desenvolvimento front-end 🎨
+
+> [🎇➡️ Confira o blog](https://lcds-blog.vercel.app/)
+
+---
+
+Conteúdos
+
+- ![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+- ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
+- ![Go JS](https://img.shields.io/badge/Go%20JS-Interactive%20diagrams-blue)
+
+---
+
+<details>
+
+<summary>📖 Detalhamento técnico</summary>
+
+## 👷 Setup inicial
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 💻 Para desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 🚀 Para produção
 ```
 npm run build
 ```
 
-### Run your end-to-end tests
+### 🧪️ Para testes end-to-end
 ```
 npm run test:e2e
 ```
 
-### Lints and fixes files
+### 🎨 Para estilização de código
 ```
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### ⚙️ [Documentação de configuração](https://cli.vuejs.org/config/)
+
+</details>
+
+
