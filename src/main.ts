@@ -2,11 +2,9 @@ import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import { createHead } from '@vueuse/head';
 
-import App from './App.vue';
-import router from './router';
-import i18n from './i18n';
-
-declare const postscribe: any;
+import App from './views/App.vue';
+import { router } from './views';
+import { i18n } from './i18n';
 
 const store = createPinia();
 const head = createHead();

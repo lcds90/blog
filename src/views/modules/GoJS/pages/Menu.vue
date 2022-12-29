@@ -2,7 +2,7 @@
 import AsideView, { IProps } from '@/components/Aside.vue';
 import { computed } from 'vue';
 import { useI18n } from 'vue-i18n';
-import IDS from '@/views/GoJS/_enums';
+import { IDS } from '../_enums';
 
 const { t } = useI18n();
 

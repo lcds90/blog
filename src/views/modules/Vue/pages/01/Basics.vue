@@ -2,10 +2,10 @@
 
 import ArticleComponent from '@/components/Article.vue';
 import { useI18n } from 'vue-i18n';
-import IDS from '@/views/GoJS/_enums';
 import GistComponent from '@/components/Gist.vue';
 import ShowMore from '@/components/ShowMore.vue';
 import CodePen from '@/components/CodePen.vue';
+import { IDS } from '../../_enums';
 
 const info = {
   alt: 'Logo do GoJS',

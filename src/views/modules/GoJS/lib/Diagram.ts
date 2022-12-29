@@ -1,7 +1,7 @@
 import * as go from 'gojs';
 import clone from 'lodash.clonedeep';
 
-class createDiagram {
+export class Diagram {
   private _diagram: go.Diagram;
 
   private _config: {
@@ -90,5 +90,3 @@ class createDiagram {
     return templateMap;
   }
 }
-
-export default createDiagram;

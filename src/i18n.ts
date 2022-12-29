@@ -19,7 +19,7 @@ function loadLocaleMessages(): LocaleMessages<VueMessageType> {
   return messages;
 }
 
-export default createI18n({
+export const i18n = createI18n({
   fallbackLocale: process.env.VUE_APP_I18N_FALLBACK_LOCALE || 'en',
   legacy: false,
   locale: localStorage.getItem('user-locale') || process.env.VUE_APP_I18N_LOCALE || 'en',

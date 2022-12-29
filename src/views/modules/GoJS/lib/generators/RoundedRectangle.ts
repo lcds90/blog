@@ -1,6 +1,6 @@
 import * as go from 'gojs';
 
-export default class RoundedRectangle {
+export class RoundedRectangle {
   private _textSourceProp: string;
 
   private _colorSourceProp: string;
