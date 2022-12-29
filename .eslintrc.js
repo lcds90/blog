@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'plugin:vue/vue3-essential',
     'plugin:vue/vue3-strongly-recommended',
+    '@vue/airbnb',
     '@vue/typescript/recommended',
   ],
   globals: {
@@ -17,8 +18,6 @@ module.exports = {
   root: true,
   rules: {
     '@typescript-eslint/no-shadow': 'error',
-    'import/no-default-export': 'off',
-    'import/prefer-default-export': 'off',
     'max-len': ['error', {
       code: 200,
       ignoreComments: true,
@@ -52,12 +51,5 @@ module.exports = {
       minKeys: 2,
       natural: false,
     }],
-  },
-  settings: {
-    // 'import/resolver': {
-    //   node: {
-    //     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.vue'],
-    //   },
-    // },
   },
 };

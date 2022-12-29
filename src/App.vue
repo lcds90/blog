@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NavbarComponent from '@/components/Navbar.vue';
 import ThemeMode from '@/components/ThemeMode.vue';
-import LocaleMode from '../components/LocaleMode.vue';
+import LocaleMode from './components/LocaleMode.vue';
 
 const links = [
   {
