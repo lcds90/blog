@@ -1,4 +1,4 @@
-# lcds-blog
+# 💻 LCDS Blog
 
 ✨ Esse projeto se trata de meu blog criado para compartilhamento de conhecimento do mundo de desenvolvimento front-end 🎨
 
